@@ -1,0 +1,48 @@
+<html (mousemove)="onMove()">
+
+<table>
+<tr>
+   <td><label>Nome </label></td>
+   <td><input [(ngModel)]="aluno.nome"></td>
+   <td><button (click)="criarAluno(aluno)">Adicionar</button></td>
+</tr>
+<tr>
+   <td><label>CPF </label></td>
+   <td><input [(ngModel)]="aluno.cpf" ></td>
+   <td *ngIf="cpfduplicado">
+     J? existe um aluno com esse CPF
+   </td>
+   <td *ngIf="alunoremovido">
+     Aluno removido com sucesso
+   </td>
+</tr>
+<tr>
+   <td><label>e-mail </label></td>
+   <td><input [(ngModel)]="aluno.email" ></td>
+</tr>
+<tr>
+   <td><label>login</label></td>
+   <td><input [(ngModel)]="aluno.login" ></td>
+</tr>
+
+</table>
+
+<table>
+<tr *ngIf="alunos.length > 0">
+   <th>Nome</th>
+   <th>CPF</th>
+   <th>e-mail</th>
+   <th>login</th>
+   
+</tr>
+<tr *ngFor="let a of alunos">
+   <td>{{a.nome}}</td>
+   <td>{{a.cpf}}</td>
+   <td>{{a.email}}</td>
+   <td>{{a.login}}</td>
+   <td><button (click)="removerAluno(a)">Remover</button></td>
+   
+</tr>
+</table>
+
+</html>
